@@ -1,5 +1,6 @@
 package com.example.brookelin.goodstart;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,8 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class HomeScreen extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    public String text;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -90,6 +93,14 @@ public class HomeScreen extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void accessSettings(View view){
+        Intent intentSettings = new Intent(this, SettingsActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.editText);
+        //String message= editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intentSettings);
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -121,7 +132,7 @@ public class HomeScreen extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_home_screen, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
 
-            //Set Text for each section
+            //EDIT TEXT INSIDE
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
@@ -132,6 +143,7 @@ public class HomeScreen extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -158,7 +170,7 @@ public class HomeScreen extends AppCompatActivity {
                 case 1:
                     return "HOME";
                 case 2:
-                    return "RULE";
+                    return "HELP";
             }
             return null;
         }
