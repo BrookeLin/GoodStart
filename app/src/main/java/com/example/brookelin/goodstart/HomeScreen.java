@@ -87,23 +87,22 @@ public class HomeScreen extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        // Show alarm layout when user is in the Alarm tab
+
+
         // Code to add alarm to the application
-        FloatingActionButton addAlarmBtn = (FloatingActionButton) findViewById(R.id.addAlarmBtn);
-        addAlarmBtn.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.addAlarmBtn).setOnClickListener(new View.OnClickListener() {
             // Called when user clicks on the button in the bottom right corner of the screen
             @Override
             public void onClick(View view) {
                 // Create the action that shows add_alarm.xml when the plus button is clicked
-                Intent intent = new Intent(view.getContext(), Alarm.class);
-                startActivity(intent);
+                startActivity(new Intent(HomeScreen.this, Alarm.class));
 
                //Snackbar.make(view, "", Snackbar.LENGTH_LONG)
                  //       .setAction("Action", null).show();
 
             }
-
         });
-
     }
 
 
