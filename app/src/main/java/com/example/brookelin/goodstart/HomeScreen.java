@@ -69,6 +69,12 @@ public class HomeScreen extends AppCompatActivity {
         });
 
     }
+    
+    public void accessSettings(View view){
+        Intent intentSettings = new Intent(this, SettingsActivity.class);
+        startActivity(intentSettings);
+    }
+
 
 
     @Override
@@ -91,14 +97,6 @@ public class HomeScreen extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void accessSettings(View view){
-        Intent intentSettings = new Intent(this, SettingsActivity.class);
-        //EditText editText = (EditText) findViewById(R.id.editText);
-        //String message= editText.getText().toString();
-        //intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intentSettings);
     }
 
     /**
