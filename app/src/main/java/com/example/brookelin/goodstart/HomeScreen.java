@@ -1,5 +1,6 @@
 package com.example.brookelin.goodstart;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -70,7 +71,7 @@ public class HomeScreen extends AppCompatActivity {
 
     }
     
-    public void accessSettings(View view){
+    public void accessSettings(MenuItem item){
         Intent intentSettings = new Intent(this, SettingsActivity.class);
         startActivity(intentSettings);
     }
