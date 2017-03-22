@@ -1,5 +1,7 @@
 package com.example.brookelin.goodstart;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -43,7 +45,8 @@ public class HomeScreen extends AppCompatActivity {
     private ViewPager mViewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
@@ -64,8 +67,14 @@ public class HomeScreen extends AppCompatActivity {
 
     public void accessAlarm(MenuItem item)
     {
-        Intent intentAlarm = new Intent(this, AlarmActivity.class);
+        Intent intentAlarm = new Intent(this, AlarmReceiver.class);
         startActivity(intentAlarm);
+
+        // pending intent delays the alarm
+        // until the time it's supposed to go off is reacher
+        PendingIntent pending = PendingIntent.getBroadcast(HomeScreen.this, 0,
+                intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
+
     }
     
     public void accessSettings(MenuItem item){
@@ -124,7 +133,8 @@ public class HomeScreen extends AppCompatActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+                                 Bundle savedInstanceState)
+        {
             View rootView = inflater.inflate(R.layout.fragment_home_screen, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.text_view);
 
