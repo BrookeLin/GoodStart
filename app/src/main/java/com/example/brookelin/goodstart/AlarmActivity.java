@@ -13,14 +13,28 @@ import android.widget.TimePicker;
 /**
  * This code was derived form a tutorial on build alarm clocks by Anna Xu on youtube
  */
-
 public class AlarmActivity extends AppCompatActivity
 {
+    /**
+     * The Manager.
+     */
     AlarmManager manager;
+    /**
+     * The Picker.
+     */
     TimePicker picker;
+    /**
+     * The Text view.
+     */
     TextView text_view;
+    /**
+     * The Context.
+     */
     Context context;
 
+    /*
+    Creates Alarm manager and GUI for alarm
+     */
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -42,6 +56,9 @@ public class AlarmActivity extends AppCompatActivity
         Button alarmOff = (Button) findViewById(R.id.alarmOff);
     }
 
+    /* Initializes another menu
+    @param menu
+     */
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu_home_screen, menu);
