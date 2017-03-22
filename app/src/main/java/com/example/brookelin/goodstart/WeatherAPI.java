@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.google.gson.JsonParser;
+//import com.google.gson.JsonParser;
 
 /**
  * Created by aaronnspiewak on 3/20/17.
@@ -51,7 +51,7 @@ public class WeatherAPI {
     }
 
     public static void parseWeatherJSON(String responseJSON){
-        JsonParser parser = new JsonParser();
+        //JsonParser parser = new JsonParser();
 
     }
 
