@@ -61,6 +61,12 @@ public class HomeScreen extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
     }
+
+    public void accessAlarm(MenuItem item)
+    {
+        Intent intentAlarm = new Intent(this, AlarmActivity.class);
+        startActivity(intentAlarm);
+    }
     
     public void accessSettings(MenuItem item){
         Intent intentSettings = new Intent(this, SettingsActivity.class);
@@ -120,10 +126,10 @@ public class HomeScreen extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_home_screen, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            TextView textView = (TextView) rootView.findViewById(R.id.text_view);
 
             //EDIT TEXT INSIDE
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            textView.setText("Alarm set to:");
             return rootView;
         }
     }

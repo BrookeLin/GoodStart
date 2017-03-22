@@ -9,9 +9,12 @@
     tools:context="com.example.brookelin.goodstart.HomeScreen$PlaceholderFragment">
 
     <TextView
-        android:id="@+id/section_label"
+        android:id="@+id/text_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Alarm set to:"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/alarmOn"
@@ -36,7 +39,7 @@
         android:text="Alarm Off" />
 
     <TimePicker
-        android:id="@+id/timePicker2"
+        android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
