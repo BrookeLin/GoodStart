@@ -12,31 +12,30 @@
         android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alarm set to:"
+        android:text="@string/alarm_set_to"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/alarmOn"
+        android:layout_toEndOf="@+id/alarmOn"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
 
     <Button
         android:id="@+id/alarmOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/alarmOff"
-        android:layout_alignBottom="@+id/alarmOff"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
-        android:text="Alarm On" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/set_alarm" />
 
     <Button
         android:id="@+id/alarmOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/cancel"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="42dp"
-        android:text="Alarm Off" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TimePicker
         android:id="@+id/timePicker"
@@ -46,5 +45,64 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/alarmOn" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/alarm_on"
+        android:layout_above="@+id/almTone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/almOnOff"
+        android:layout_toStartOf="@+id/almOnOff" />
+
+    <Switch
+        android:id="@+id/almOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/alarmOn"
+        android:layout_toEndOf="@+id/alarmOn"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_alignTop="@+id/editText3"
+        android:layout_above="@+id/button" />
+
+    <EditText
+        android:id="@+id/almTone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/alarmOn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/text_view"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/alarm_tone"
+        android:layout_alignRight="@+id/alarmOn"
+        android:layout_alignEnd="@+id/alarmOn" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/browse"
+        android:textSize="12sp"
+        android:layout_alignTop="@+id/almTone"
+        android:layout_toLeftOf="@+id/editText3"
+        android:layout_toStartOf="@+id/editText3" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/alarm_name"
+        android:layout_above="@+id/button"
+        android:layout_toRightOf="@+id/text_view"
+        android:layout_toEndOf="@+id/text_view" />
 
 </RelativeLayout>
