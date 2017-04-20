@@ -34,6 +34,9 @@ import android.location.Criteria;
 
 import android.widget.Toast;
 
+import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
+import com.example.brookelin.goodstart.weatherapi.WeatherAPI;
+
 /**
  * Created by BrookeLin on 4/15/2017.
  */
@@ -44,7 +47,7 @@ public class FindLocation extends Activity implements LocationListener {
     public int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
     protected LocationListener locationListener;
     protected Context context;
-    protected String latitude, longitude;
+    //protected String latitude, longitude;
     protected boolean gps_enabled;
     public Location location;
 
@@ -111,11 +114,21 @@ public class FindLocation extends Activity implements LocationListener {
     }
     @Override
     public void onLocationChanged(Location location) {
-        TextView longitude = (TextView) findViewById(R.id.textView);
-        TextView latitude = (TextView) findViewById(R.id.textView1);
+        // Update location texts
+        // TODO change textview ID names - super vague and confusing. Sad!
+        TextView longitudeView = (TextView) findViewById(R.id.textView);
+        TextView latitudeView = (TextView) findViewById(R.id.textView1);
 
-        longitude.setText("Current Longitude:" + location.getLongitude());
-        latitude.setText("Current Latitude:" + location.getLatitude());
+        double latitude, longitude;
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        latitudeView.setText("Current Latitude:" + latitude);
+        longitudeView.setText("Current Longitude:" + longitude);
+
+        // Also update weather info (pursuant of SRS v1.0 Section 4.3.2)
+        CurrentObservation obs = WeatherAPI.getWeather(latitide, longitude);
+
+
     }
 
     @Override
