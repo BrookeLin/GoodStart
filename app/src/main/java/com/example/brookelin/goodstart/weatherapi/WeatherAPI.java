@@ -1,4 +1,4 @@
-package com.example.brookelin.goodstart;
+package com.example.brookelin.goodstart.weatherapi;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
