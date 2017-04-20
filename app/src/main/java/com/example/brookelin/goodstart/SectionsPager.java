@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.brookelin.goodstart.weatherapi.Weather;
-
 public class SectionsPager extends FragmentPagerAdapter {
 
     int tabCount;
@@ -16,6 +14,7 @@ public class SectionsPager extends FragmentPagerAdapter {
     }
 
     @Override
+    // TODO add comments please! :)
     public Fragment getItem(int position) {
 
         switch (position) {
@@ -23,13 +22,13 @@ public class SectionsPager extends FragmentPagerAdapter {
                 Alarm tab_alarm = new Alarm();
                 return tab_alarm;
             case 1:
-                Weather tab_weather = new Weather();
+                WeatherFrag tab_weather = new WeatherFrag();
                 return tab_weather;
             case 2:
                 Help tab_help = new Help();
                 return tab_help;
             default:
-                Weather default_weather = new Weather();
+                WeatherFrag default_weather = new WeatherFrag();
                 return default_weather;
         }
     }

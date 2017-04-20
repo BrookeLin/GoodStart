@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-//import com.google.gson.JsonParser;
+import com.google.gson.Gson;
 
 /**
  * Created by aaronnspiewak on 3/20/17.
@@ -31,11 +31,10 @@ public class WeatherAPI {
      * Main method called to access other class methods to obtain weather data
      */
     public static void main(String[] a) throws Exception {
-        String url, result;
-        url = ENDPOINT + "38.000,-84.000.json";
-        result = getHTML(url);
-        System.out.println(url);
-        System.out.println(result);
+        CurrentObservation obs = getWeather(38.000, -84.000);
+        System.out.println(obs.getTempF());
+        System.out.println(obs.getWeather());
+
     }
 
     /**
@@ -49,14 +48,15 @@ public class WeatherAPI {
      *Obtains weather data based upon  coordinates.
      * @param latitude  Lattitude coordinate of target weather destination
      * @param longitude Longitudal coordinate of target weather destination
+     * @return The current conditions for the destination.
      */
-    public void getWeather(double latitude, double longitude) throws Exception {
+    public static CurrentObservation getWeather(double latitude, double longitude) throws Exception {
         String responseJSON;
         //make http request
         responseJSON = getHTML(ENDPOINT + latitude +','+ longitude + ".json");
 
         //parse http response
-        parseWeatherJSON(responseJSON);
+        return parseWeatherJSON(responseJSON);
 
     }
 
@@ -87,11 +87,13 @@ public class WeatherAPI {
      *
      * @param responseJSON the response json
      */
-/*
-     * Parses strings of weather data
-     */
-    public static void parseWeatherJSON(String responseJSON){
-        //JsonParser parser = new JsonParser();
+    public static CurrentObservation parseWeatherJSON(String responseJSON){
+        // Create GSON object
+        Gson gson = new Gson();
+
+        // Create ConditionsAPIResponse object from JSON data
+        ConditionsAPIResponse response = gson.fromJson(responseJSON, ConditionsAPIResponse.class);
+        return response.getCurrentObservation();
 
     }
 
