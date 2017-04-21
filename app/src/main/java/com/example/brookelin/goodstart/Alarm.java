@@ -32,13 +32,16 @@ public class Alarm extends Fragment {
         update_text = (TextView) alarmView.findViewById(R.id.text_view);
 
         addAlarm = (Button) alarmView.findViewById(R.id.alarmButton);
+        /*
         addAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 set_alarm_text("Button has been clicked");
+                Intent intent = new Intent(getActivity(), AlarmActivity.class);
+                startActivity(intent);
             }
 
-        });
+        });*/
 
         return alarmView;
     }

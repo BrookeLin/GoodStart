@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
     <!-- app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -27,27 +28,26 @@
         </activity>
         <activity
             android:name=".FindLocation"
-            android:parentActivityName=".MainActivity" >
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".AlarmActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".SettingsActivity">
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".MainActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".AlarmActivity"
+            android:parentActivityName=".MainActivity" >
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.example.brookelin.goodstart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.TabLayout;
@@ -9,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * GoodStart's main activity is defined by a swipeable tab layout and
@@ -67,13 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* Opens up new page with alarm layout to set an alarm*/
-    public void accessAlarm(MenuItem item)
-    {
+    /** Called when the user taps the add alarm button */
+    public void addAlarm(View view) {
         Intent alarmIntent = new Intent(this, AlarmActivity.class);
         startActivity(alarmIntent);
-
     }
+
     /*
     public void accessAlarm(MenuItem item)
     {
