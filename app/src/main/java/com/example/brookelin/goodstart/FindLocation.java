@@ -126,7 +126,7 @@ public class FindLocation extends Activity implements LocationListener {
         longitudeView.setText("Current Longitude:" + longitude);
 
         // Also update weather info (pursuant of SRS v1.0 Section 4.3.2)
-        CurrentObservation obs = WeatherAPI.getWeather(latitide, longitude);
+        //CurrentObservation obs = WeatherAPI.getWeather(latitide, longitude);
 
 
     }
