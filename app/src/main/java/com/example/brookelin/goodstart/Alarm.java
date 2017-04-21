@@ -1,5 +1,6 @@
 package com.example.brookelin.goodstart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Alarm extends Fragment implements View.OnClickListener {
+public class Alarm extends Fragment {
     Button addAlarm;
     TextView update_text;
 
@@ -31,14 +32,15 @@ public class Alarm extends Fragment implements View.OnClickListener {
         update_text = (TextView) alarmView.findViewById(R.id.text_view);
 
         addAlarm = (Button) alarmView.findViewById(R.id.alarmButton);
-        addAlarm.setOnClickListener(this);
+        addAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                set_alarm_text("Button has been clicked");
+            }
+
+        });
 
         return alarmView;
-    }
-
-    @Override
-    public void onClick(View v) {
-        set_alarm_text("The button has been clicked");
     }
 
     private void set_alarm_text(String output) {

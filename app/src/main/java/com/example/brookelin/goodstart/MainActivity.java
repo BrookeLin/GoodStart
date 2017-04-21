@@ -67,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /* Opens up new page with alarm layout to set an alarm*/
+    public void accessAlarm(MenuItem item)
+    {
+        Intent alarmIntent = new Intent(this, AlarmActivity.class);
+        startActivity(alarmIntent);
+
+    }
     /*
     public void accessAlarm(MenuItem item)
     {
