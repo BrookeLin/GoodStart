@@ -29,9 +29,9 @@ public class AlarmAudioService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("Local Service","Received start id " + startId + ":" + intent);
 
-        // Create instance of media player to play ringtone
-        //alarm_media = MediaPlayer.create(this,R.raw.WoodPecker);
-        //alarm_media.start();
+        // Create instance of media player to play ringtone at the time the alarm is set
+        alarm_media = MediaPlayer.create(this,R.raw.woodpecker);
+        alarm_media.start();
 
         return  START_NOT_STICKY;
     }

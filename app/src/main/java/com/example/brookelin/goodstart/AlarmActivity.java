@@ -75,6 +75,15 @@ public class AlarmActivity extends AppCompatActivity {
                     String hour_information = String.valueOf(hour);
                     String minute_information = String.valueOf(minute);
 
+                    // Use if statement to display time of the alarm properly
+                    if(hour > 12){
+                        hour_information = String.valueOf(hour - 12);
+                    }
+
+                    if(minute < 10){
+                        minute_information = "0" + String.valueOf(minute);
+                    }
+
                     // Update text to show the alarm is enabled
                     set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
 
