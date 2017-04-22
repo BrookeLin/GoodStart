@@ -1,11 +1,16 @@
 package com.example.brookelin.goodstart;
 
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -27,6 +32,7 @@ public class AlarmAudioService extends Service {
         return null;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("Local Service","Received start id " + startId + ":" + intent);
@@ -34,7 +40,11 @@ public class AlarmAudioService extends Service {
         // Fetch extra values
         String state = intent.getExtras().getString("extra");
 
+        // Fetch audio choice integer values
+        Integer audio_choice_id = intent.getExtras().getInt("choose_audio");
+
         Log.e("Ringtone extra is ", state);
+        Log.e("Audio choice is ", audio_choice_id.toString());
 
 
 
@@ -60,15 +70,64 @@ public class AlarmAudioService extends Service {
         if(!this.isRunning && startId == 1){
             Log.e("there is no music","you want on");
 
-            // create instance of the media player
-            alarm_media = MediaPlayer.create(this, R.raw.flute_alarm);
-            // Starts ringtone
-            alarm_media.start();
-
             this.isRunning = true;
             this.startId = 0;
 
+            // Play the audio chosen by the user
+            if(audio_choice_id == 0){
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.calm_wakeup);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 1){
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.early_sunrise);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 2){
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.flute_alarm);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 3){
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.gentleness);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 4) {
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.good_morning);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 5) {
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.loving_you);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 6) {
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.rainfall);
+                // Starts ringtone
+                alarm_media.start();
+
+            } else if(audio_choice_id == 7) {
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.sunshine);
+                // Starts ringtone
+                alarm_media.start();
+
+            }
+
         }
+
+
+
         /* if there is music playing and the user toggles the alarm to disabled,
         * music should stop playing */
         else if(this.isRunning && startId == 0){
@@ -104,13 +163,6 @@ public class AlarmAudioService extends Service {
             Log.e("else","somehow you got here");
 
         }
-
-        // Create instance of media player to play ringtone at the time the alarm is set
-        alarm_media = MediaPlayer.create(this,R.raw.flute_alarm);
-        alarm_media.start();
-
-        // If-else statement to cancel the alarm while it is sounding
-
 
         return  START_NOT_STICKY;
     }

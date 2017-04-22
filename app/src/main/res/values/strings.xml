@@ -13,6 +13,17 @@
     <string name="browse">Browse</string>
     <string name="set_alarm">Set Alarm</string>
 
+    <string-array name="alarm_sounds">
+        <item>Calm Wakeup</item>
+        <item>Early Sunrise</item>
+        <item>Flute</item>
+        <item>Gentleness</item>
+        <item>Good Morning</item>
+        <item>Loving You</item>
+        <item>Rainfall</item>
+        <item>Sunshine</item>
+    </string-array>
+
     <!-- Strings related to Settings -->
 
 

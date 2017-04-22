@@ -21,11 +21,20 @@ public class AlarmReceiver extends BroadcastReceiver {
         String getYourString = wakeIntent.getExtras().getString("extra");
         Log.e("What is the key",getYourString);
 
+        // Fetch extra longs from intent in AlarmActivity
+        // This tells the app which value the user picked from the dropdown menu
+        Long get_audio_choice = wakeIntent.getExtras().getLong("choose_audio");
+        Log.e("Audio choices",get_audio_choice.toString());
+
         // Create intent to ringtone service
         Intent serviceIntent = new Intent(context, AlarmAudioService.class);
 
-        // Pass extra string from alarm activity to the ringtone playing service
+        // Pass extra string from receiver to the ringtone playing service
         serviceIntent.putExtra("extra",getYourString);
+
+        // Pass extra integer from the receiver to the AlarmAudioService
+        serviceIntent.putExtra("choose_audio",get_audio_choice);
+
 
         // Start ringtone service
         context.startService(serviceIntent);

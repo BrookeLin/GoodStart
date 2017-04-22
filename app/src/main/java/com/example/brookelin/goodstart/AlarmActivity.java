@@ -8,21 +8,28 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.Calendar;
 
-public class AlarmActivity extends AppCompatActivity {
+public class AlarmActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AlarmManager alarm_manager;
     TextView update_text;
     Calendar calendar;
     TimePicker timePicker;
+    Spinner audio_spinner;
     PendingIntent alarmPending;
     private static AlarmActivity inst;
     Context context;
+    long choose_audio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,19 @@ public class AlarmActivity extends AppCompatActivity {
          * When the toggle button is on, the alarm will be set and it will be canceled when
          * the alarm has been turned off.*/
         ToggleButton toggle_alarm = (ToggleButton) findViewById(R.id.toggleButton);
+
+        // create the spinner for the user to choose the alarm
+        // Initialize spinner for the alarm options
+        audio_spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Create array adapter using string array and default spinner layout
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,
+                R.array.alarm_sounds, android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        audio_spinner.setAdapter(arrayAdapter);
+
+        // Create onClickListener for the spinner
+        audio_spinner.setOnItemSelectedListener(this);
 
         /* onClickListener for the toggle button*/
         toggle_alarm.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +110,11 @@ public class AlarmActivity extends AppCompatActivity {
                     // Extra string into enabledIntent to tell clock you pressed toggle button
                     enabledIntent.putExtra("extra","alarm on");
 
+                    // put in extra long value into enabledIntent to tell the clock
+                    // that the user want a certain value from the spinner
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("Whale ID is",String.valueOf(choose_audio));
+
                     /* Create the pending intent that will delay the alarm intent until
                     * the specified time*/
                     alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
@@ -110,10 +135,14 @@ public class AlarmActivity extends AppCompatActivity {
                     //Tells the clock that you turned alarm off
                     enabledIntent.putExtra("extra","alarm off");
 
+                    enabledIntent.putExtra("",choose_audio);
+
 
                     // Stop the ringtone
                     //sendBroadcast(enabledIntent);
                 }
+
+
             }
 
         });
@@ -122,5 +151,18 @@ public class AlarmActivity extends AppCompatActivity {
 
     private void set_alarm_text(String update) {
         update_text.setText(update);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        // outputting whatever id the user has selected
+        Toast.makeText(parent.getContext(),"the spinner item is " + id, Toast.LENGTH_SHORT).show();
+        choose_audio = id;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
