@@ -8,7 +8,7 @@
     tools:context="com.example.brookelin.goodstart.SettingsActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/alarm_information"
         android:layout_width="166dp"
         android:layout_height="0dp"
         android:layout_marginLeft="24dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/textView"
+        app:layout_constraintLeft_toRightOf="@+id/alarm_information"
         android:layout_marginLeft="8dp"
         app:layout_constraintHorizontal_bias="1.0"
         android:layout_marginTop="16dp" />
@@ -44,7 +44,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/switchForTextSpeech"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        app:layout_constraintLeft_toLeftOf="@+id/alarm_information"
         app:layout_constraintRight_toLeftOf="@+id/switchForTextSpeech"
         app:layout_constraintTop_toTopOf="@+id/switchForTextSpeech"
         app:layout_constraintVertical_bias="0.0"

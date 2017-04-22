@@ -9,33 +9,13 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.widget.TextView;
 
 /**
  * Created by BrookeLin on 4/15/2017.
  */
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
-import android.widget.TextView;
-
-import android.location.Criteria;
-
 import android.widget.Toast;
-
-import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
-import com.example.brookelin.goodstart.weatherapi.WeatherAPI;
 
 /**
  * Created by BrookeLin on 4/15/2017.
@@ -116,7 +96,7 @@ public class FindLocation extends Activity implements LocationListener {
     public void onLocationChanged(Location location) {
         // Update location texts
         // TODO change textview ID names - super vague and confusing. Sad!
-        TextView longitudeView = (TextView) findViewById(R.id.textView);
+        TextView longitudeView = (TextView) findViewById(R.id.alarm_information);
         TextView latitudeView = (TextView) findViewById(R.id.textView1);
 
         double latitude, longitude;

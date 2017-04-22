@@ -21,4 +21,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
         android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/alarm_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toggleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp" />
 </RelativeLayout>
