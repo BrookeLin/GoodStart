@@ -40,7 +40,7 @@ public class AlarmAudioService extends Service {
                 startId = 1;
                 break;
             case "alarm off":
-                startId = 0;
+                Log.e("Start id is ", state);
                 break;
             default:
                 startId = 0;
