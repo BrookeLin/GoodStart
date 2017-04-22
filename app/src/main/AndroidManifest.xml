@@ -48,6 +48,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />></activity>
+
+
+        <receiver android:name=".AlarmReceiver"></receiver>
+
+        <service android:name=".AlarmAudioService"
+            android:enabled="true"></service>
+
     </application>
 
 </manifest>
