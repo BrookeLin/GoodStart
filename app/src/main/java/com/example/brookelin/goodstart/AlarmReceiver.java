@@ -17,8 +17,15 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Log.e("You are in the receiver", "yay");
 
+        // Fetch extra string from the intent
+        String getYourString = wakeIntent.getExtras().getString("extra");
+        Log.e("What is the key",getYourString);
+
         // Create intent to ringtone service
         Intent serviceIntent = new Intent(context, AlarmAudioService.class);
+
+        // Pass extra string from alarm activity to the ringtone playing service
+        serviceIntent.putExtra("extra",getYourString);
 
         // Start ringtone service
         context.startService(serviceIntent);

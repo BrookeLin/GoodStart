@@ -76,7 +76,7 @@ public class AlarmActivity extends AppCompatActivity {
                     String minute_information = String.valueOf(minute);
 
                     // Use if statement to display time of the alarm properly
-                    if(hour > 12){
+                    if(hour >= 13){
                         hour_information = String.valueOf(hour - 12);
                     }
 
@@ -86,6 +86,9 @@ public class AlarmActivity extends AppCompatActivity {
 
                     // Update text to show the alarm is enabled
                     set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
+
+                    // Extra string into enabledIntent to tell clock you pressed toggle button
+                    enabledIntent.putExtra("extra","alarm on");
 
                     /* Create the pending intent that will delay the alarm intent until
                     * the specified time*/
@@ -102,7 +105,14 @@ public class AlarmActivity extends AppCompatActivity {
                     set_alarm_text("Alarm has been disabled");
 
                     // Cancel alarm intent when toggle is disabled
-                    //alarm_manager.cancel(alarmPending);
+                    alarm_manager.cancel(alarmPending);
+
+                    //Tells the clock that you turned alarm off
+                    enabledIntent.putExtra("extra","alarm off");
+
+
+                    // Stop the ringtone
+                    sendBroadcast(enabledIntent);
                 }
             }
 
