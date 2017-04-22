@@ -99,8 +99,8 @@ public class AlarmActivity extends AppCompatActivity {
                     alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                             alarmPending);
 
-                } else {
-                    alarm_manager.cancel(alarmPending);
+
+                } else if(!checked){
                     // Update text to show the alarm is disabled
                     set_alarm_text("Alarm has been disabled");
 
@@ -112,7 +112,7 @@ public class AlarmActivity extends AppCompatActivity {
 
 
                     // Stop the ringtone
-                    sendBroadcast(enabledIntent);
+                    //sendBroadcast(enabledIntent);
                 }
             }
 

@@ -18,6 +18,8 @@ import android.widget.Toast;
 public class AlarmAudioService extends Service {
 
     MediaPlayer alarm_media;
+    int startId;
+    boolean isRunning;
 
     @Nullable
     @Override
@@ -34,6 +36,9 @@ public class AlarmAudioService extends Service {
 
         Log.e("Ringtone extra is ", state);
 
+
+
+        // This converts extra strings from intent to start IDs, values 0 or 1
         assert state != null;
         switch (state) {
             case "alarm on":
@@ -45,6 +50,59 @@ public class AlarmAudioService extends Service {
             default:
                 startId = 0;
                 break;
+        }
+
+
+        // if else statements
+
+        // If there is no music playing and the user toggles the alarm to enabled
+        // music should start playing
+        if(!this.isRunning && startId == 1){
+            Log.e("there is no music","you want on");
+
+            // create instance of the media player
+            alarm_media = MediaPlayer.create(this, R.raw.flute_alarm);
+            // Starts ringtone
+            alarm_media.start();
+
+            this.isRunning = true;
+            this.startId = 0;
+
+        }
+        /* if there is music playing and the user toggles the alarm to disabled,
+        * music should stop playing */
+        else if(this.isRunning && startId == 0){
+            Log.e("there is music", "and you want it to end");
+
+            // Stop the ringtone
+            alarm_media.stop();
+            alarm_media.reset();
+
+            this.isRunning = false;
+            this.startId = 0;
+        }
+        /* the next two statements are for the user pressing random buttons*/
+        /* If there is no music playing and alarm toggles to off, do nothing*/
+        else if(this.isRunning && startId == 0){
+            Log.e("there is no music","and you want end");
+
+            this.isRunning = false;
+            this.startId = 0;
+
+        }
+        /* If there is no music playing and alarm toggles to on, do nothing*/
+        else if(!this.isRunning && startId == 1) {
+            Log.e("there is music","you want start");
+
+            this.isRunning = true;
+            this.startId = 1;
+
+
+        }
+        // Just to catch an odd event
+        else {
+            Log.e("else","somehow you got here");
+
         }
 
         // Create instance of media player to play ringtone at the time the alarm is set
@@ -59,7 +117,11 @@ public class AlarmAudioService extends Service {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "on Destroy called", Toast.LENGTH_SHORT).show();
+        Log.e("on destroy called","yay");
+
+        super.onDestroy();
+        this.isRunning = false;
+
     }
 
 }
