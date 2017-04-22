@@ -48,7 +48,7 @@ public class AlarmAudioService extends Service {
         }
 
         // Create instance of media player to play ringtone at the time the alarm is set
-        alarm_media = MediaPlayer.create(this,R.raw.woodpecker);
+        alarm_media = MediaPlayer.create(this,R.raw.flute_alarm);
         alarm_media.start();
 
         // If-else statement to cancel the alarm while it is sounding
