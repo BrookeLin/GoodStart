@@ -43,27 +43,101 @@ public class ClothingPicker {
     }
 
 
-    public int pickTops(Boolean hotPref, Double highTemp, Integer humidity, Boolean windy){
+    public int pickTops(Boolean hotPref, Double highTemp, Boolean windy){
         tops=0;
         if(hotPref){
-            if( (highTemp>=76 && !windy && humidity>50) || (highTemp>=80 && windy&& humidity>50))
-                tops=1;   //wear tank top
-            if((highTemp<76 && !windy && highTemp>65 && humidity<=75) ||(highTemp<80 && windy && humidity <= 50) )
-                tops=2;   //wear short sleeve
-            if(highTemp<80 && windy)
-                tops=2;
+            if(windy){
+                tops=5;        //wear winter coat
+                if(highTemp>45){
+                    tops=4;     //wear sweatshirt
+                    if(highTemp>57){
+                        tops=3;     //wear long sleeve
+                        if (highTemp>68){
+                            tops=2;     //wear short sleeve
+                            if(highTemp>75){
+                                tops=1;  //wear tank top
+                            }
+                        }
+                    }
+                }
 
+            }
+            if(!windy){
+                tops=5;        //wear winter coat
 
+                if(highTemp>45){
+                    tops=4;     //wear sweatshirt
+                    if(highTemp>57){
+                        tops=3;     //wear long sleeve
+                        if (highTemp>68){
+                            tops=2;     //wear short sleeve
+                            if(highTemp>75){
+                                tops=1;  //wear tank top
+                            }
+                        }
+                    }
+                }
+
+            }
         }else{
-            if( highTemp>=68 && !windy)
-                tops=1;   //wear shorts
-            if(highTemp>=72 && windy)
-                tops=1;
-            if(highTemp<68 && !windy)
-                tops=2;   //wear pants
-            if(highTemp<72 && windy)
-                tops=2;
+            if(windy){
+                tops=5;        //wear winter coat
+
+                if(highTemp>50){
+                    tops=4;     //wear sweatshirt
+                    if(highTemp>63){
+                        tops=3;     //wear long sleeve
+                        if (highTemp>74){
+                            tops=2;     //wear short sleeve
+                            if(highTemp>83){
+                                tops=1;  //wear tank top
+                            }
+                        }
+                    }
+                }
+
+            }
+            if(!windy) {
+                tops = 5;        //wear winter coat
+
+                if (highTemp > 48) {
+                    tops = 4;     //wear sweatshirt
+                    if (highTemp > 60) {
+                        tops = 3;     //wear long sleeve
+                        if (highTemp > 72) {
+                            tops = 2;     //wear short sleeve
+                            if (highTemp > 80) {
+                                tops = 1;  //wear tank top
+                            }
+                        }
+                    }
+                }
+
+            }
         }
         return tops;
+    }
+
+    //PRECIP: 0 is none/sunny, 1 is light rain, 2 is heavy rain, 3 is snow, etc
+    public int pickAcces(int precip){
+        switch (precip){
+
+            case 0:
+                accessory=0;  //wear sunglasses
+                break;
+            case 1:
+                accessory=1;   //bring umbrella
+                break;
+            case 2:
+                accessory=2;   //bring raincoat
+                break;
+            case 3:
+                accessory=3;   //bring hat/mittens/scarf?
+                break;
+        }
+
+
+
+        return accessory;
     }
 }
