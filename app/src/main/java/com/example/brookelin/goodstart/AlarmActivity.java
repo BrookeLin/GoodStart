@@ -137,9 +137,6 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
                 // Update text to show the alarm is disabled
                 set_alarm_text("Alarm has been disabled");
 
-                // Cancel alarm intent when toggle is disabled
-                alarm_manager.cancel(alarmPending);
-
                 //Tells the clock that you turned alarm off
                 enabledIntent.putExtra("extra","alarm off");
 
@@ -147,6 +144,7 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
                 sendBroadcast(enabledIntent);
 
                 enabledIntent.putExtra("",choose_audio);
+
             }
         });
 

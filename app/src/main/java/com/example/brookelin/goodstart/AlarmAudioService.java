@@ -45,7 +45,6 @@ public class AlarmAudioService extends Service {
 
 
         /* Create the notification for when the alarm goes off*/
-        /*
         NotificationManager alarm_notification = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
@@ -62,7 +61,7 @@ public class AlarmAudioService extends Service {
                 .build();
 
         // Set up notification start command
-        alarm_notification.notify(0, notification); */
+        alarm_notification.notify(0, notification);
 
         // This converts extra strings from intent to start IDs, values 0 or 1
         assert state != null;
@@ -157,22 +156,20 @@ public class AlarmAudioService extends Service {
             alarm_media.reset();
         }
         /* the next two statements are for the user pressing random buttons*/
-        /* If there is no music playing and alarm toggles to off, do nothing*/
-        else if(this.isRunning && startId == 0){
+        /* If there is no music playing and alarm off is pressed, do nothing*/
+        else if(!this.isRunning && startId == 0){
             Log.e("there is no music","and you want end");
 
             this.isRunning = false;
             this.startId = 0;
 
         }
-        /* If there is no music playing and alarm toggles to on, do nothing*/
-        else if(!this.isRunning && startId == 1) {
+        /* If there is music playing and the alarm is turned on, do nothing*/
+        else if(this.isRunning && startId == 1) {
             Log.e("there is music","you want start");
 
             this.isRunning = true;
             this.startId = 1;
-
-
         }
         // Just to catch an odd event
         else {
