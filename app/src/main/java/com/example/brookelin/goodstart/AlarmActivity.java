@@ -287,6 +287,8 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
                 //Tells the clock that you turned alarm off
                 enabledIntent.putExtra("extra","alarm off");
 
+
+
                 // Stop the ringtone when button is clicked
                 sendBroadcast(enabledIntent);
 

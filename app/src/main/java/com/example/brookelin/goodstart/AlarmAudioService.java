@@ -77,7 +77,7 @@ public class AlarmAudioService extends Service {
 
         // if else statements
 
-        // If there is no music playing and the user toggles the alarm to enabled
+        // If there is no music playing and the user turns the alarm on
         // music should start playing
         if(!this.isRunning && startId == 1){
             Log.e("there is no music","you want on");
