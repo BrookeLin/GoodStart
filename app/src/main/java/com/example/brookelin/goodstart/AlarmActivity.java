@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import static java.lang.Math.toIntExact;
 import android.widget.ToggleButton;
 
 import java.util.Calendar;
@@ -29,7 +30,16 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
     PendingIntent alarmPending;
     private static AlarmActivity inst;
     Context context;
-    long choose_audio;
+    int choose_audio;
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        // outputting whatever id the user has selected
+        Toast.makeText(parent.getContext(),"the spinner item is " + id, Toast.LENGTH_SHORT).show();
+        choose_audio = (int) id;
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,13 +163,7 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
         update_text.setText(update);
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        // outputting whatever id the user has selected
-        Toast.makeText(parent.getContext(),"the spinner item is " + id, Toast.LENGTH_SHORT).show();
-        choose_audio = id;
-    }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

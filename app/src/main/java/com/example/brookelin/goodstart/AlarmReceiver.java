@@ -23,8 +23,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // Fetch extra longs from intent in AlarmActivity
         // This tells the app which value the user picked from the dropdown menu
-        Long get_audio_choice = wakeIntent.getExtras().getLong("choose_audio");
-        Log.e("Audio choices",get_audio_choice.toString());
+        int get_audio_choice = wakeIntent.getExtras().getInt("choose_audio");
+        // Log.e("Audio choices",get_audio_choice.toString());
+
+        //bitch
 
         // Create intent to ringtone service
         Intent serviceIntent = new Intent(context, AlarmAudioService.class);

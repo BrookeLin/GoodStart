@@ -43,8 +43,8 @@ public class AlarmAudioService extends Service {
         // Fetch audio choice integer values
         Integer audio_choice_id = intent.getExtras().getInt("choose_audio");
 
-        Log.e("Ringtone extra is ", state);
-        Log.e("Audio choice is ", audio_choice_id.toString());
+        // Log.e("Ringtone extra is ", state);
+        // Log.e("Audio choice is ", audio_choice_id.toString());
 
 
 
