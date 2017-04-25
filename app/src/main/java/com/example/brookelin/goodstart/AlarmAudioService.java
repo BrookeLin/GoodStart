@@ -130,18 +130,33 @@ public class AlarmAudioService extends Service {
 
             } else if(audio_choice_id == 6) {
                 // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.my_blue_sky);
+                alarm_media.setLooping(true);
+                // Starts ringtone
+                alarm_media.start();
+
+            }
+
+            else if(audio_choice_id == 7) {
+                // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.rainfall);
                 alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
-            } else if(audio_choice_id == 7) {
+            } else if(audio_choice_id == 8) {
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.sunshine);
                 alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
+            } else if(audio_choice_id == 9) {
+                // create instance of the media player
+                alarm_media = MediaPlayer.create(this, R.raw.trapdoor___top);
+                alarm_media.setLooping(true);
+                // Starts ringtone
+                alarm_media.start();
             }
 
             // Set up notification start command
