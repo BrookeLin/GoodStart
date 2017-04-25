@@ -17,6 +17,7 @@
         android:layout_marginRight="21dp"
         android:clickable="true"
         android:onClick="addAlarm"
+        android:tint="@color/colorPrimary"
         app:fabSize="mini"
         app:rippleColor="@android:color/background_light"
         app:srcCompat="@android:drawable/ic_input_add" />
