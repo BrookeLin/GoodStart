@@ -20,8 +20,10 @@
         <item>Gentleness</item>
         <item>Good Morning</item>
         <item>Loving You</item>
+        <item>Mr. Blue Sky</item>
         <item>Rainfall</item>
         <item>Sunshine</item>
+        <item>Trapdoor</item>
     </string-array>
     <string name="help">The different functions of this app include the alarms, weather, and suggestions of what to wear based on the weather. GoodStart and its affiliates are not responsible for any ill advised clothing selections. Please make sure that GoodStart has permission to access your location, otherwise bad things may happen to you and your cow.</string>
 

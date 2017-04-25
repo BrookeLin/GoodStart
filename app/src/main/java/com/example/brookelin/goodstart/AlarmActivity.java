@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -56,6 +58,15 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
         // Initialize calendar
         calendar = Calendar.getInstance();
 
+        // Initialize the check boxes for days alarm is meant to repeat
+        final CheckBox sunday = (CheckBox) findViewById(R.id.Sunday);
+        final CheckBox monday = (CheckBox) findViewById(R.id.monday);
+        final CheckBox tuesday = (CheckBox) findViewById(R.id.tuesday);
+        final CheckBox wednesday = (CheckBox) findViewById(R.id.wednesday);
+        final CheckBox thursday = (CheckBox) findViewById(R.id.thursday);
+        final CheckBox friday = (CheckBox) findViewById(R.id.friday);
+        final CheckBox saturday = (CheckBox) findViewById(R.id.saturday);
+
         /*Initialize the text box that tells the user the alarm is enabled
          * and create the onClickListener for it as well.
          */
@@ -63,11 +74,6 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
 
         // Create an intent for the toggle button to the AlarmReceiver class
         final Intent enabledIntent = new Intent(this.context, AlarmReceiver.class);
-
-        /* Initialize the toggle button and create the on click listener for it.
-         * When the toggle button is on, the alarm will be set and it will be canceled when
-         * the alarm has been turned off.*/
-        ToggleButton toggle_alarm = (ToggleButton) findViewById(R.id.toggleButton);
 
         // create the spinner for the user to choose the alarm
         // Initialize spinner for the alarm options
@@ -82,48 +88,50 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
         // Create onClickListener for the spinner
         audio_spinner.setOnItemSelectedListener(this);
 
-        /* onClickListener for the toggle button*/
-        toggle_alarm.setOnClickListener(new View.OnClickListener() {
+        // Initialize the on button and create an onClickListener for it
+        Button alarm_on = (Button) findViewById(R.id.onButton);
+        alarm_on.setOnClickListener(new View.OnClickListener()
+        {
             @TargetApi(Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-
-                // Create boolean value that checks if the toggle button is enabled or not
-                boolean checked = ((ToggleButton) v).isChecked();
-
-                if(checked){
-
-                    /* Set the calendar instance with the hour and minute the user has picked
+            public void onClick(View v)
+            {
+                /* Set the calendar instance with the hour and minute the user has picked
                      * then get the integer values of the hour as well as the minute*/
-                    calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
-                    calendar.set(Calendar.MINUTE, timePicker.getMinute());
-                    int hour = timePicker.getHour();
-                    int minute = timePicker.getMinute();
+                calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
+                calendar.set(Calendar.MINUTE, timePicker.getMinute());
 
-                    /* Convert the integer values to strings to display time alarm is set to the
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
+
+                /* Convert the integer values to strings to display time alarm is set to the
                        user. */
-                    String hour_information = String.valueOf(hour);
-                    String minute_information = String.valueOf(minute);
+                String hour_information = String.valueOf(hour);
+                String minute_information = String.valueOf(minute);
 
-                    // Use if statement to display time of the alarm properly
-                    if(hour >= 13){
-                        hour_information = String.valueOf(hour - 12);
-                    }
+                // Use if statement to display time of the alarm properly
+                if(hour >= 13){
+                    hour_information = String.valueOf(hour - 12);
+                }
 
-                    if(minute < 10){
-                        minute_information = "0" + String.valueOf(minute);
-                    }
+                if(minute < 10){
+                    minute_information = "0" + String.valueOf(minute);
+                }
 
+
+                // Series of if statements to start alarm if the day of the week is selected
+                // Get the information on what day it is
+                int day = calendar.get(Calendar.DAY_OF_WEEK);
+                Log.e("the day of the week is", Integer.toString(day));
+
+                if(day == 1 && sunday.isChecked()){
                     // Update text to show the alarm is enabled
                     set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
 
-                    // Extra string into enabledIntent to tell clock you pressed toggle button
+                    // Extra string into enabledIntent to tell clock you pressed on button
                     enabledIntent.putExtra("extra","alarm on");
 
-                    // put in extra long value into enabledIntent to tell the clock
-                    // that the user want a certain value from the spinner
                     enabledIntent.putExtra("choose_audio", choose_audio);
-                    Log.e("Whale ID is",String.valueOf(choose_audio));
+                    Log.e("The audio is",String.valueOf(choose_audio));
 
                     /* Create the pending intent that will delay the alarm intent until
                     * the specified time*/
@@ -134,27 +142,159 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
                     alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                             alarmPending);
 
+                } else if(day == 2 && monday.isChecked()){
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
 
-                } else if(!checked){
-                    // Update text to show the alarm is disabled
-                    set_alarm_text("Alarm has been disabled");
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
 
-                    // Cancel alarm intent when toggle is disabled
-                    alarm_manager.cancel(alarmPending);
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
 
-                    //Tells the clock that you turned alarm off
-                    enabledIntent.putExtra("extra","alarm off");
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                    enabledIntent.putExtra("",choose_audio);
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
+                } else if(day == 3 && tuesday.isChecked()){
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
 
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
 
-                    // Stop the ringtone
-                    //sendBroadcast(enabledIntent);
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
+
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
+                } else if(day == 4 && wednesday.isChecked()){
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
+
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
+
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
+
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
+                } else if(day == 5 && thursday.isChecked()){
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
+
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
+
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
+
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
+                } else if(day == 6 && friday.isChecked()){
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
+
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
+
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
+
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
+                } else if(day == 7 && saturday.isChecked()){
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
+
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
+
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
+
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
+                } else {
+                    // Update text to show the alarm is enabled
+                    set_alarm_text("Alarm set to: " + hour_information + ":" + minute_information);
+
+                    // Extra string into enabledIntent to tell clock you pressed on button
+                    enabledIntent.putExtra("extra","alarm on");
+
+                    enabledIntent.putExtra("choose_audio", choose_audio);
+                    Log.e("The audio is",String.valueOf(choose_audio));
+
+                    /* Create the pending intent that will delay the alarm intent until
+                    * the specified time*/
+                    alarmPending = PendingIntent.getBroadcast(AlarmActivity.this, 0,
+                            enabledIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    /* Set the alarm manager */
+                    alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                            alarmPending);
                 }
 
 
             }
+        });
 
+        // Initialize and create onClickListener for the off button
+        Button alarm_off = (Button) findViewById(R.id.offButton);
+        alarm_off.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v) {
+                // Update text to show the alarm is disabled
+                set_alarm_text("Alarm has been disabled");
+
+                //Tells the clock that you turned alarm off
+                enabledIntent.putExtra("extra","alarm off");
+
+
+
+                // Stop the ringtone when button is clicked
+                sendBroadcast(enabledIntent);
+
+                enabledIntent.putExtra("",choose_audio);
+
+            }
         });
 
     }
@@ -162,6 +302,8 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
     private void set_alarm_text(String update) {
         update_text.setText(update);
     }
+
+
 
 
 

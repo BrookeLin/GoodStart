@@ -2,6 +2,7 @@ package com.example.brookelin.goodstart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager(), layout.getTabCount());
         viewPager.setAdapter(adapter);
 
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(layout));
 
         layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         Intent gpsIntent= new Intent(this, FindLocation.class);
         startActivity(gpsIntent);
     }
+
+
 
 
     /** Called when the user taps the add alarm button */
