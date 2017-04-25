@@ -22,23 +22,94 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="46dp" />
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
+    <TextView
+        android:id="@+id/alarm_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/offButton"
+        android:layout_alignBottom="@+id/offButton"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:id="@+id/Sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S"
+        android:layout_above="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp" />
+
+    <CheckBox
+        android:id="@+id/monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Sunday"
+        android:layout_toEndOf="@+id/Sunday"
+        android:layout_toRightOf="@+id/Sunday"
+        android:text="M" />
+
+    <CheckBox
+        android:id="@+id/tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/monday"
+        android:layout_toEndOf="@+id/monday"
+        android:layout_toRightOf="@+id/monday"
+        android:text="Tu" />
+
+    <CheckBox
+        android:id="@+id/wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tuesday"
+        android:layout_toEndOf="@+id/tuesday"
+        android:layout_toRightOf="@+id/tuesday"
+        android:text="W" />
+
+    <CheckBox
+        android:id="@+id/thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/wednesday"
+        android:layout_toEndOf="@+id/wednesday"
+        android:layout_toRightOf="@+id/wednesday"
+        android:text="Th" />
+
+    <CheckBox
+        android:id="@+id/friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thursday"
+        android:layout_toEndOf="@+id/thursday"
+        android:layout_toRightOf="@+id/thursday"
+        android:text="F" />
+
+    <CheckBox
+        android:id="@+id/saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/friday"
+        android:layout_toEndOf="@+id/friday"
+        android:layout_toRightOf="@+id/friday"
+        android:text="S" />
+
+    <Button
+        android:id="@+id/offButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Off"
+        android:layout_below="@+id/timePicker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/onButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/timePicker"
-        android:text="ToggleButton" />
-
-    <TextView
-        android:id="@+id/alarm_information"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toggleButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp"
-        android:text="TextView" />
+        android:text="On" />
 
 </RelativeLayout>

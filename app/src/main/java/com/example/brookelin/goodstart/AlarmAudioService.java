@@ -43,10 +43,26 @@ public class AlarmAudioService extends Service {
         // Fetch audio choice integer values
         Integer audio_choice_id = intent.getExtras().getInt("choose_audio");
 
-        // Log.e("Ringtone extra is ", state);
-        // Log.e("Audio choice is ", audio_choice_id.toString());
 
+        /* Create the notification for when the alarm goes off*/
+        /*
+        NotificationManager alarm_notification = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
 
+        Intent intent_main = new Intent(this, AlarmActivity.class);
+
+        PendingIntent notification_pending = PendingIntent.getActivity(this,0,intent_main,0);
+
+        // Make the notification parameters
+        Notification notification = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                .setContentTitle("GoodStart Alarm")
+                .setContentText("Turn off")
+                .setContentIntent(notification_pending)
+                .build();
+
+        // Set up notification start command
+        alarm_notification.notify(0, notification); */
 
         // This converts extra strings from intent to start IDs, values 0 or 1
         assert state != null;
@@ -55,7 +71,7 @@ public class AlarmAudioService extends Service {
                 startId = 1;
                 break;
             case "alarm off":
-                Log.e("Start id is ", state);
+                startId = 0;
                 break;
             default:
                 startId = 0;
@@ -128,17 +144,17 @@ public class AlarmAudioService extends Service {
 
 
 
-        /* if there is music playing and the user toggles the alarm to disabled,
+        /* if there is music playing and the user presses the off button,
         * music should stop playing */
         else if(this.isRunning && startId == 0){
             Log.e("there is music", "and you want it to end");
 
+            this.isRunning = false;
+            this.startId = 0;
+
             // Stop the ringtone
             alarm_media.stop();
             alarm_media.reset();
-
-            this.isRunning = false;
-            this.startId = 0;
         }
         /* the next two statements are for the user pressing random buttons*/
         /* If there is no music playing and alarm toggles to off, do nothing*/
