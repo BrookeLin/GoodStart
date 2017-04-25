@@ -1,7 +1,7 @@
 package com.example.brookelin.goodstart.weatherapi;
 
 /**
- * Created by aaronnspiewak on 4/20/17.
+ * Created by aaronn spiewak on 4/20/17.
  */
 
 public class CurrentObservation {
@@ -11,6 +11,7 @@ public class CurrentObservation {
     private double temp_f;
 
     private String relative_humidity;
+
     /* Basic weather string (e.g. "Partly Cloudy") */
     private String weather;
 

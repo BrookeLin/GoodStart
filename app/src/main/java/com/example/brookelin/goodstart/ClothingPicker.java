@@ -10,7 +10,7 @@ public class ClothingPicker {
 
     public Integer pants;   //1 is shorts, 2 is pants
     public Integer tops;    // 1 is tank top, 2 is short sleeve, 3 is long sleeve, 4 is sweatshirt, 5 is winter jacket
-    public Integer accessory;  //1 is raincoat/umbrella, 2 is sunglasses, 3 is winter hat
+    public Integer accessory;  // 0 is sunglasses, 1 is umbrella, 2 is raincoat, 3 is winter hat/mittens/scarf?
 
 
 
@@ -29,6 +29,8 @@ public class ClothingPicker {
                 pants=2;
 
 
+
+
     }else{
             if( highTemp>=68 && !windy)
                 pants=1;   //wear shorts
@@ -44,7 +46,7 @@ public class ClothingPicker {
 
 
     public int pickTops(Boolean hotPref, Double highTemp, Boolean windy){
-        tops=0;
+
         if(hotPref){
             if(windy){
                 tops=5;        //wear winter coat

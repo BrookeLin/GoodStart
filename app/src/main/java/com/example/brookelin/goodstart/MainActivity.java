@@ -66,8 +66,15 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        //startActivity(new Intent(this, FindLocation.class));
 
     }
+
+    public void useGPS(View view){
+        Intent gpsIntent= new Intent(this, FindLocation.class);
+        startActivity(gpsIntent);
+    }
+
 
     /** Called when the user taps the add alarm button */
     public void addAlarm(View view) {
@@ -75,18 +82,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(alarmIntent);
     }
 
-    /*
-    public void accessAlarm(MenuItem item)
-    {
-        Intent intentAlarm = new Intent(this, AlarmReceiver.class);
-        startActivity(intentAlarm);
-
-        // pending intent delays the alarm
-        // until the time it's supposed to go off is reacher
-        PendingIntent pending = PendingIntent.getBroadcast(MainActivity.this, 0,
-                intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-    */
 
     /**
      * Opens up new page with setting options

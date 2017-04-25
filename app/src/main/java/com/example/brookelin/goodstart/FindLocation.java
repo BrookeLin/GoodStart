@@ -10,15 +10,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.widget.TextView;
-
-/**
- * Created by BrookeLin on 4/15/2017.
- */
-
 import android.widget.Toast;
 
 /**
  * Created by BrookeLin on 4/15/2017.
+ * Code portions courtesy of
  */
 
 
@@ -34,11 +30,8 @@ public class FindLocation extends Activity implements LocationListener {
     @Override
     protected void onCreate(Bundle savedInstancesState){
         super.onCreate(savedInstancesState);
-        setContentView(R.layout.fragment_home_screen);
-        /*super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home_screen);
-        LocationManager locationManager;
-        */
+        setContentView(R.layout.locationfinder);
+        this.context=this;
         String mprovider;
 
 
@@ -46,7 +39,6 @@ public class FindLocation extends Activity implements LocationListener {
             // TODO: Consider calling
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-                //textView2.setText("Made it here");
 
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
@@ -87,7 +79,7 @@ public class FindLocation extends Activity implements LocationListener {
             if (location != null)
                 onLocationChanged(location);
             else
-                Toast.makeText(getBaseContext(), "No Location Provider Found Check Your Code", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "No Location Provider Found", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -95,9 +87,8 @@ public class FindLocation extends Activity implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         // Update location texts
-        // TODO change textview ID names - super vague and confusing. Sad!
-        TextView longitudeView = (TextView) findViewById(R.id.alarm_information);
-        TextView latitudeView = (TextView) findViewById(R.id.textView1);
+        TextView longitudeView = (TextView) findViewById(R.id.longTextV);
+       TextView latitudeView = (TextView) findViewById(R.id.latTextV);
 
         double latitude, longitude;
         latitude = location.getLatitude();
