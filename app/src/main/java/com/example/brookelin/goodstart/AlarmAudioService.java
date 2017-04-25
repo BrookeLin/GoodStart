@@ -60,9 +60,6 @@ public class AlarmAudioService extends Service {
                 .setContentIntent(notification_pending)
                 .build();
 
-        // Set up notification start command
-        alarm_notification.notify(0, notification);
-
         // This converts extra strings from intent to start IDs, values 0 or 1
         assert state != null;
         switch (state) {
@@ -138,6 +135,9 @@ public class AlarmAudioService extends Service {
                 alarm_media.start();
 
             }
+
+            // Set up notification start command
+            alarm_notification.notify(0, notification);
 
         }
 
