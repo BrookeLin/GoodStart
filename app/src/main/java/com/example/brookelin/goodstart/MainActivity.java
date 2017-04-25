@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * GoodStart's main activity is defined by a swipeable tab layout and
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager(), layout.getTabCount());
         viewPager.setAdapter(adapter);
 
+
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(layout));
 
         layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -81,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         Intent alarmIntent = new Intent(this, AlarmActivity.class);
         startActivity(alarmIntent);
     }
+
+
 
 
     /**

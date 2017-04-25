@@ -3,12 +3,14 @@ package com.example.brookelin.goodstart;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -116,6 +118,16 @@ public class FindLocation extends Activity implements LocationListener {
     public void onProviderDisabled(String s) {
 
     }
+
+    public void backButton(View view) {
+        Intent backIntent = new Intent(this, MainActivity.class);
+        startActivity(backIntent);
+    }
+
+    public void imagesWeather(View view) {
+
+    }
+
 }
 
 

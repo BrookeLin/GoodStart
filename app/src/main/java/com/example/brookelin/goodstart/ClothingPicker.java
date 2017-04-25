@@ -142,4 +142,6 @@ public class ClothingPicker {
 
         return accessory;
     }
+
+    //public void pickClothes()
 }
