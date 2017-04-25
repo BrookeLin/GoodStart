@@ -27,7 +27,7 @@ public class FindLocation extends Activity implements LocationListener {
     public int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
     protected LocationListener locationListener;
     protected Context context;
-    //protected String latitude, longitude;
+    protected String latitude, longitude;
     protected boolean gps_enabled;
     public Location location;
 
