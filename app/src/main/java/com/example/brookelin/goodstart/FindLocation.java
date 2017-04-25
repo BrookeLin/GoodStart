@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
+import com.example.brookelin.goodstart.weatherapi.WeatherAPI;
+
 /**
  * Created by BrookeLin on 4/15/2017.
  * Code portions courtesy of
@@ -99,7 +102,7 @@ public class FindLocation extends Activity implements LocationListener {
         longitudeView.setText("Current Longitude:" + longitude);
 
         // Also update weather info (pursuant of SRS v1.0 Section 4.3.2)
-        //CurrentObservation obs = WeatherAPI.getWeather(latitide, longitude);
+       // CurrentObservation obs = WeatherAPI.getWeather(latitude, longitude);
 
 
     }
