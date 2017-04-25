@@ -89,48 +89,56 @@ public class AlarmAudioService extends Service {
             if(audio_choice_id == 0){
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.calm_wakeup);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 1){
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.early_sunrise);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 2){
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.flute_alarm);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 3){
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.gentleness);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 4) {
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.good_morning);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 5) {
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.loving_you);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 6) {
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.rainfall);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
             } else if(audio_choice_id == 7) {
                 // create instance of the media player
                 alarm_media = MediaPlayer.create(this, R.raw.sunshine);
+                alarm_media.setLooping(true);
                 // Starts ringtone
                 alarm_media.start();
 
