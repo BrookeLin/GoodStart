@@ -21,4 +21,15 @@
         app:fabSize="mini"
         app:rippleColor="@android:color/background_light"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
 </RelativeLayout>

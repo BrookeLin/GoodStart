@@ -33,8 +33,8 @@ public class FindLocation extends Activity implements LocationListener {
     public Location location;
 
     @Override
-    protected void onCreate(Bundle savedInstancesState){
-        super.onCreate(savedInstancesState);
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.locationfinder);
         this.context=this;
         String mprovider;
