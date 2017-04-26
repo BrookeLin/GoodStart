@@ -20,8 +20,13 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import static java.lang.Math.toIntExact;
 import android.widget.ToggleButton;
+import android.speech.tts.TextToSpeech;
+
+import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
+import com.example.brookelin.goodstart.weatherapi.WeatherAPI;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class AlarmActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AlarmManager alarm_manager;
@@ -30,6 +35,7 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
     TimePicker timePicker;
     Spinner audio_spinner;
     PendingIntent alarmPending;
+    TextToSpeech TTS;
     private static AlarmActivity inst;
     Context context;
     int choose_audio;
@@ -48,6 +54,14 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
         this.context = this;
+
+        TTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            public void onInit(int status){
+                if(status != TextToSpeech.ERROR){
+                    TTS.setLanguage(Locale.US);
+                }
+            }
+        });
 
         // Initialize alarm manager
         alarm_manager = (AlarmManager)getSystemService(ALARM_SERVICE);
@@ -278,8 +292,8 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
         Button alarm_off = (Button) findViewById(R.id.offButton);
         alarm_off.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
+            @SuppressWarnings("deprecation")
             public void onClick(View v) {
                 // Update text to show the alarm is disabled
                 set_alarm_text("Alarm has been disabled");
@@ -293,6 +307,69 @@ public class AlarmActivity extends AppCompatActivity implements AdapterView.OnIt
                 sendBroadcast(enabledIntent);
 
                 enabledIntent.putExtra("",choose_audio);
+
+                //Do the TextToSpeech thang
+
+                CurrentObservation outside = new CurrentObservation();
+/*                try {
+                     outside = WeatherAPI.getWeather(29, -81);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }*/
+
+                //WeatherAPI no working, using the same class type I insert placeholder data
+                outside.temp_f = 81.5;
+                outside.feelslike_f = 78;
+                outside.weather = "Sunny";
+                outside.wind_string = "11";
+
+                //Create the strings based on values
+                // Later have it set for the settings (only relevant strings are passed
+                String temp = "The temperature is " + outside.temp_f+ " degrees.";
+                String feelslike = "It feels like" + outside.feelslike_f + "degrees.";
+                String weather = "It is" + outside.weather;
+                String wind = " and the Winds are " + outside.wind_string + " miles per hour.";
+                //String clothes = "You should wear a t-shirt, shorts and a light jacket for the morning.";
+                String speakThis = "Good morning!" + temp + feelslike + weather + wind;
+
+                //pick the clothing options and pass through strings
+                ClothingPicker pick = new ClothingPicker();
+                boolean windy;
+                if(Double.parseDouble(outside.wind_string) >10){
+                    windy = true;
+                }else{
+                    windy = false;
+                }
+                pick.pants = pick.pickShorts(false, outside.temp_f, windy);
+                String pants = " ";
+                if (pick.pants == 1){
+                    pants = " shorts";
+                }else {
+                    pants = " pants";
+                }
+                String top = " ";
+                pick.tops = pick.pickTops(false, outside.temp_f, windy);
+
+                if(pick.tops == 1) {
+                    top = " tank top";
+                }else if (pick.tops == 2) {
+                    top = " short sleeve shirt";
+                }else if (pick.tops == 3) {
+                    top = " long sleeve shirt";
+                }else if (pick.tops == 4) {
+                    top = " sweat shirt";
+                }else if (pick.tops == 5) {
+                    top = " winter coat";
+                }
+
+                //combine strings one final time
+                String clothes = "You should wear " + pants + " and a" + top + ". Have a splendid day!";
+                String speakStuff = speakThis + clothes;
+                //speak the stuff
+                TTS.speak(speakStuff, TextToSpeech.QUEUE_FLUSH, null);
+                //apparently you can't have two of those... Even if QUEUE_FLUSH is changed
+                //to QUEUE_ADD, which should work. But I'm out of time.
+                //TTS.speak(clothes, TextToSpeech.QUEUE_ADD, null);
 
             }
         });

@@ -31,7 +31,7 @@ public class ClothingPicker {
 
 
 
-    }else{
+        }else{
             if( highTemp>=68 && !windy)
                 pants=1;   //wear shorts
             if(highTemp>=72 && windy)
@@ -44,77 +44,61 @@ public class ClothingPicker {
         return pants;
     }
 
-
+        /*
+        Edited by Joshua Woodland 2017-04-18
+         */
     public int pickTops(Boolean hotPref, Double highTemp, Boolean windy){
-
-        if(hotPref){
+        if (hotPref){
             if(windy){
-                tops=5;        //wear winter coat
-                if(highTemp>45){
-                    tops=4;     //wear sweatshirt
-                    if(highTemp>57){
-                        tops=3;     //wear long sleeve
-                        if (highTemp>68){
-                            tops=2;     //wear short sleeve
-                            if(highTemp>75){
-                                tops=1;  //wear tank top
-                            }
-                        }
-                    }
+                if (highTemp > 75){
+                    tops = 1; //tank top
+                }else if (highTemp <=75 && highTemp > 68){
+                    tops = 2; //short sleve
+                }else if (highTemp <= 68 && highTemp > 57){
+                    tops = 3; //long sleve
+                }else if (highTemp <= 57 && highTemp > 45){
+                    tops = 4; //sweater
+                }else if (highTemp <= 45){
+                    tops = 5; // winter coat
                 }
-
+            }else{
+                if (highTemp > 75){
+                    tops = 1; //tank top
+                }else if (highTemp <=75 && highTemp > 68){
+                    tops = 2; //short sleve
+                }else if (highTemp <= 68 && highTemp > 57){
+                    tops = 3; //long sleve
+                }else if (highTemp <= 57 && highTemp > 45){
+                    tops = 4; //sweater
+                }else if (highTemp <= 45){
+                    tops = 5; // winter coat
+                }
             }
-            if(!windy){
-                tops=5;        //wear winter coat
-
-                if(highTemp>45){
-                    tops=4;     //wear sweatshirt
-                    if(highTemp>57){
-                        tops=3;     //wear long sleeve
-                        if (highTemp>68){
-                            tops=2;     //wear short sleeve
-                            if(highTemp>75){
-                                tops=1;  //wear tank top
-                            }
-                        }
-                    }
+        }else {
+            if (windy) {
+                if (highTemp > 83) {
+                    tops = 1; //tank top
+                } else if (highTemp <= 83 && highTemp > 74) {
+                    tops = 2; //short sleve
+                } else if (highTemp <= 74 && highTemp > 63) {
+                    tops = 3; //long sleve
+                } else if (highTemp <= 63 && highTemp > 50) {
+                    tops = 4; //sweater
+                } else if (highTemp <= 50){
+                    tops = 5; // winter coat
                 }
-
-            }
-        }else{
-            if(windy){
-                tops=5;        //wear winter coat
-
-                if(highTemp>50){
-                    tops=4;     //wear sweatshirt
-                    if(highTemp>63){
-                        tops=3;     //wear long sleeve
-                        if (highTemp>74){
-                            tops=2;     //wear short sleeve
-                            if(highTemp>83){
-                                tops=1;  //wear tank top
-                            }
-                        }
-                    }
+            } else {
+                if (highTemp > 83) {
+                    tops = 1; //tank top
+                } else if (highTemp <= 83 && highTemp > 74) {
+                    tops = 2; //short sleve
+                } else if (highTemp <= 74 && highTemp > 63) {
+                    tops = 3; //long sleve
+                } else if (highTemp <= 63 && highTemp > 50) {
+                    tops = 4; //sweater
+                } else if (highTemp <= 50){
+                    tops = 1; // winter coat
                 }
-
-            }
-            if(!windy) {
-                tops = 5;        //wear winter coat
-
-                if (highTemp > 48) {
-                    tops = 4;     //wear sweatshirt
-                    if (highTemp > 60) {
-                        tops = 3;     //wear long sleeve
-                        if (highTemp > 72) {
-                            tops = 2;     //wear short sleeve
-                            if (highTemp > 80) {
-                                tops = 1;  //wear tank top
-                            }
-                        }
-                    }
-                }
-
             }
         }
         return tops;
