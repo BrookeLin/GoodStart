@@ -8,16 +8,16 @@ public class CurrentObservation {
 
 
     /* Temperature in F */
-    private double temp_f;
+    public double temp_f;
 
-    private double feelslike_f;
+    public double feelslike_f;
 
-    private String relative_humidity;
+    public String relative_humidity;
 
     /* Basic weather string (e.g. "Partly Cloudy") */
-    private String weather;
+    public String weather;
 
-    private String wind_string;
+    public String wind_string;
 
     public double getTempF() {
 
