@@ -6,11 +6,19 @@
 
     <Button
         android:id="@+id/getLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="81dp"
+        android:layout_height="58dp"
         android:background="@drawable/ic_sync_black_24dp"
         android:backgroundTint="@color/colorAccent"
         android:onClick="useGPS"
-        android:text="Refresh Location" />
+        android:text="Refresh Location"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:id="@+id/cityState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.03"
+        android:text="TextView" />
 
 </LinearLayout>

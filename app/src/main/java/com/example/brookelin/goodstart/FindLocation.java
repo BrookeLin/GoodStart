@@ -98,8 +98,8 @@ public class FindLocation extends Activity implements LocationListener {
         double latitude, longitude;
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        latitudeView.setText("Current Latitude:" + latitude);
-        longitudeView.setText("Current Longitude:" + longitude);
+        latitudeView.setText("Current Latitude:\n" + latitude + "\n\n");
+        longitudeView.setText("Current Longitude:\n" + longitude + "\n");
 
         // Also update weather info (pursuant of SRS v1.0 Section 4.3.2)
         CurrentObservation obs= new CurrentObservation();
