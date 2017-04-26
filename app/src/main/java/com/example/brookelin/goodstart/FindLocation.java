@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
+import com.example.brookelin.goodstart.weatherapi.WeatherAPI;
+
 /**
  * Created by BrookeLin on 4/15/2017.
  * Code portions courtesy of
@@ -30,8 +33,8 @@ public class FindLocation extends Activity implements LocationListener {
     public Location location;
 
     @Override
-    protected void onCreate(Bundle savedInstancesState){
-        super.onCreate(savedInstancesState);
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.locationfinder);
         this.context=this;
         String mprovider;
@@ -95,11 +98,13 @@ public class FindLocation extends Activity implements LocationListener {
         double latitude, longitude;
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        latitudeView.setText("Current Latitude:" + latitude);
-        longitudeView.setText("Current Longitude:" + longitude);
+        latitudeView.setText("Current Latitude:\n" + latitude + "\n\n");
+        longitudeView.setText("Current Longitude:\n" + longitude + "\n");
 
         // Also update weather info (pursuant of SRS v1.0 Section 4.3.2)
-        //CurrentObservation obs = WeatherAPI.getWeather(latitide, longitude);
+        CurrentObservation obs= new CurrentObservation();
+        WeatherAPI WAPI= new WeatherAPI();
+        //obs = WAPI.getWeather(latitude, longitude);
 
 
     }

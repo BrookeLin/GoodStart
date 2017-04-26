@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     /**
      * Opens up new page with setting options
      *

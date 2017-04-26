@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 
 /**
@@ -22,9 +23,15 @@ public class WeatherFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+       /* ImageView bottomsImage = (ImageView) View.findViewById(R.id.imageView5);
+        bottomsImage.setImageResource(R.drawable.pants);*/
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_weather, container, false);
     }
+
+
 
 
 
