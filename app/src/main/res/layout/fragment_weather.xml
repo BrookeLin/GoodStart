@@ -8,27 +8,27 @@
     android:weightSum="1">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/accesimg"
         android:layout_width="107dp"
         android:layout_height="96dp"
         android:layout_marginLeft="261dp"
+        android:layout_marginTop="311dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:srcCompat="@drawable/raincoatclipart"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="311dp" />
+        app:srcCompat="@drawable/raincoatclipart" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/bottomsimg"
         android:layout_width="107dp"
         android:layout_height="96dp"
-        app:srcCompat="@drawable/raincoatclipart"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="311dp"
-        app:layout_constraintLeft_toRightOf="@+id/imageView5"
-        android:layout_marginLeft="16dp" />
+        app:layout_constraintLeft_toRightOf="@+id/topsimg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/raincoatclipart" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/topsimg"
         android:layout_width="107dp"
         android:layout_height="96dp"
         app:srcCompat="@drawable/raincoatclipart"
@@ -54,19 +54,19 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/editText2"
+        android:id="@+id/cityState"
         android:layout_width="337dp"
         android:layout_height="96dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="87dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
         app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="87dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 

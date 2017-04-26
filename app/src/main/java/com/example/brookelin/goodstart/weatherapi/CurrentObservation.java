@@ -20,20 +20,24 @@ public class CurrentObservation {
     private String wind_string;
 
     public double getTempF() {
+
         return temp_f;
     }
 
     public double getFeelsLikeF() {return feelslike_f;}
 
     public String getRelativeHumidity() {
+
         return relative_humidity;
     }
 
     public String getWindString() {
+
         return wind_string;
     }
 
     public String getWeather() {
+
         return weather;
     }
 }

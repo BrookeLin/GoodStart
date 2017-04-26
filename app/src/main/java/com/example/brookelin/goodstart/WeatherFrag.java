@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
 
 
 /**
@@ -14,6 +17,11 @@ import android.widget.ImageView;
  */
 public class WeatherFrag extends Fragment {
 
+    public FindLocation cityStateInfo;
+
+    public TextView cityState;
+    public String cityname;
+    public CurrentObservation curobs;
 
     public WeatherFrag() {
         // Required empty public constructor
@@ -27,14 +35,20 @@ public class WeatherFrag extends Fragment {
        /* ImageView bottomsImage = (ImageView) View.findViewById(R.id.imageView5);
         bottomsImage.setImageResource(R.drawable.pants);*/
 
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather, container, false);
+        View weather = inflater.inflate(R.layout.fragment_weather, container, false);
+
+        //Get variables from location activity
+        //Bundle bundle = getArguments();
+        //cityname= ((MainActivity)getActivity()).getCityState();
+
+        //cityname= mApp.getaddress();
+       // cityState.setText(cityname + "\n");
+
+       // curobs=mApp.getcurrobs();
+
+        return weather;
     }
-
-
-
-
-
-
 
 }

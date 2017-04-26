@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
+
 /**
  * GoodStart's main activity is defined by a swipeable tab layout and
  * is stored within this class. This class calls each tab and displays
@@ -25,6 +27,7 @@ import android.widget.Button;
  */
 
 public class MainActivity extends AppCompatActivity {
+    public GlobalVars mApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Allow global variables
+        /*mApp = (GlobalVars)getApplicationContext();
+        String cityState=mApp.getaddress();
+        CurrentObservation currobs= mApp.getcurrobs();
+        boolean hotPref= mApp.getHotPref();
+*/
         // Set the tab layout
         TabLayout layout = (TabLayout) findViewById(R.id.tabs);
 
@@ -50,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(layout));
+
+        //WeatherFrag.setArguments();
 
         layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -68,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        //startActivity(new Intent(this, FindLocation.class));
 
     }
 
@@ -131,5 +141,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }
