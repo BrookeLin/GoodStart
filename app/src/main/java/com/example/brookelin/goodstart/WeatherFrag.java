@@ -17,11 +17,11 @@ import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
  */
 public class WeatherFrag extends Fragment {
 
-    public FindLocation cityStateInfo;
+    //public FindLocation cityStateInfo;
 
-    public TextView cityState;
     public String cityname;
-    public CurrentObservation curobs;
+    public TextView address;
+    //public CurrentObservation curobs;
 
     public WeatherFrag() {
         // Required empty public constructor
@@ -38,15 +38,17 @@ public class WeatherFrag extends Fragment {
 
         // Inflate the layout for this fragment
         View weather = inflater.inflate(R.layout.fragment_weather, container, false);
+        address= (TextView) weather.findViewById(R.id.cityState);
+
+        cityname= "600 S Clyde Morris Blvd Daytona Beach, FL 32114";
+                //gpsIntent.returnCit();
 
         //Get variables from location activity
         //Bundle bundle = getArguments();
         //cityname= ((MainActivity)getActivity()).getCityState();
 
-        //cityname= mApp.getaddress();
-       // cityState.setText(cityname + "\n");
+       address.setText(cityname+"\n");
 
-       // curobs=mApp.getcurrobs();
 
         return weather;
     }

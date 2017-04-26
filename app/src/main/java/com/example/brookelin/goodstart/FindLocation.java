@@ -66,7 +66,7 @@ public class FindLocation extends Activity implements LocationListener {
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
+
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
@@ -134,11 +134,9 @@ public class FindLocation extends Activity implements LocationListener {
         cityState=getCitStat();
         cityStateTxt.setText(cityState);
 
-        //WeatherFrag.setArguments(bundle);
-
 
         // Also update weather info (pursuant of SRS v1.0 Section 4.3.2)
-        CurrentObservation obs = new CurrentObservation();
+       CurrentObservation obs = new CurrentObservation();
         WeatherAPI WAPI = new WeatherAPI();
 
         try {
@@ -170,12 +168,12 @@ public class FindLocation extends Activity implements LocationListener {
 
     }
 
-    /*
+
     public void backButton(View view) {
         Intent backIntent = new Intent(this.context, MainActivity.class);
         backIntent.putExtra("location", cityState);
         startActivity(backIntent);
-    }*/
+    }
 
     public void imagesWeather(View view) {
 
@@ -183,11 +181,13 @@ public class FindLocation extends Activity implements LocationListener {
 
     //Getter for latitude
     public Double getLatitude() {
+
         return latitude;
     }
 
     //Getter for longitude
     public Double getLongitude() {
+
         return longitude;
     }
 

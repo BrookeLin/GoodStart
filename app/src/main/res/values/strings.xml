@@ -26,6 +26,7 @@
         <item>Trapdoor</item>
     </string-array>
     <string name="help">The different functions of this app include the alarms, weather, and suggestions of what to wear based on the weather. GoodStart and its affiliates are not responsible for any ill advised clothing selections. Please make sure that GoodStart has permission to access your location, otherwise bad things may happen to you and your cow.</string>
+    <string name="refresh_location">Refresh Location</string>
 
     <!-- Strings related to Settings -->
 

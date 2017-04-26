@@ -27,7 +27,7 @@ import com.example.brookelin.goodstart.weatherapi.CurrentObservation;
  */
 
 public class MainActivity extends AppCompatActivity {
-    public GlobalVars mApp;
+    public String cityState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Allow global variables
-        /*mApp = (GlobalVars)getApplicationContext();
-        String cityState=mApp.getaddress();
-        CurrentObservation currobs= mApp.getcurrobs();
-        boolean hotPref= mApp.getHotPref();
-*/
+
         // Set the tab layout
         TabLayout layout = (TabLayout) findViewById(R.id.tabs);
 
@@ -60,12 +55,29 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(layout));
 
-        //WeatherFrag.setArguments();
 
         layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+
+               /* try {
+                    cityState = getIntent().getStringExtra("location");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("cityState", cityState);
+               /*bundle.putString("tops",topsImg);
+                  bundle.putString("bottoms",bottomsImg);
+                     bundle.putString("accessory",accessImg);
+
+
+                    WeatherFrag WFrag = new WeatherFrag();
+                    WFrag.setArguments(bundle);
+                }catch(Exception e){
+                    //nothing
+                }
+
+*/
+
             }
 
             @Override
@@ -95,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
         Intent alarmIntent = new Intent(this, AlarmActivity.class);
         startActivity(alarmIntent);
     }
-
-
 
 
 
