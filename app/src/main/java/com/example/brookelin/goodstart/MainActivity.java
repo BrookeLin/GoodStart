@@ -86,10 +86,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(alarmIntent);
     }
 
-    public void alarmInList(MenuItem item) {
-
-
-    }
 
 
 
